@@ -39,3 +39,32 @@ func GetTxOutputs(ctx context.Context, server, bear, tx string, offset, limit in
 	err := common.GetWithBear(ctx, url, bear, &resp)
 	return resp, err
 }
+
+func GetAddressBalance(ctx context.Context, server, bear, address string) (ResponseAddressBalance, error) {
+	var resp ResponseAddressBalance
+	url := AddressBalance(server, address)
+	err := common.GetWithBear(ctx, url, bear, &resp)
+	return resp, err
+}
+
+func GetAddressHistory(ctx context.Context, server, bear, address string) (ResponseAddressBalance, error) {
+	//var resp ResponseAddressBalance
+	//url := AddressBalance(server, address)
+	//err := common.GetWithBear(ctx, url, bear, &resp)
+	//return resp, err
+	panic("not supported")
+}
+
+func GetBtcUtxo(ctx context.Context, server, bear, address string, offset, limit int64) (ResponseBtcUtxo, error) {
+	var resp ResponseBtcUtxo
+	url := BtcUtxo(server, address, offset, limit)
+	err := common.GetWithBear(ctx, url, bear, &resp)
+	return resp, err
+}
+
+func GetInscriptionUtxo(ctx context.Context, server, bear, address string, offset, limit int64) (ResponseInscriptionUtxo, error) {
+	var resp ResponseInscriptionUtxo
+	url := InscriptionUtxo(server, address, offset, limit)
+	err := common.GetWithBear(ctx, url, bear, &resp)
+	return resp, err
+}

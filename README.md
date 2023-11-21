@@ -16,3 +16,7 @@ if err != nil {
     log.Fatalf("GetBlockchainInfo error: %s", err)
 }
 ```
+
+## 联系作者
+
+你可以在X推特([@alexgiantwhale](https://twitter.com/alexgiantwhale))和电报(alexgiantwhale)上找到我。

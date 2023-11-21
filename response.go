@@ -108,3 +108,59 @@ type ResponseTxOutputs struct {
 
 	Data []Output `json:"data"`
 }
+
+type Balance struct {
+	Address string `json:"address"`
+
+	Satoshi        *big.Int `json:"satoshi"`
+	PendingSatoshi *big.Int `json:"pendingSatoshi"`
+	UtxoCount      int64    `json:"utxoCount"`
+
+	BtcSatoshi        *big.Int `json:"btcSatoshi"`
+	BtcPendingSatoshi *big.Int `json:"btcPendingSatoshi"`
+	BtcUtxoCount      int64    `json:"btcUtxoCount"`
+
+	InscriptionSatoshi        *big.Int `json:"inscriptionSatoshi"`
+	InscriptionPendingSatoshi *big.Int `json:"inscriptionPendingSatoshi"`
+	InscriptionUtxoCount      int64    `json:"inscriptionUtxoCount"`
+}
+
+type ResponseAddressBalance struct {
+	Code    int64  `json:"code"`
+	Message string `json:"msg"`
+
+	Data Balance `json:"data"`
+}
+
+type UTXO struct {
+	TxId         string        `json:"txid"`
+	Vout         int           `json:"vout"`
+	Satoshi      *big.Int      `json:"satoshi"`
+	ScriptType   string        `json:"scriptType"`
+	ScriptPk     string        `json:"scriptPk"`
+	CodeType     int           `json:"codeType"`
+	Address      string        `json:"address"`
+	Height       int64         `json:"height"`
+	Index        int           `json:"idx"`
+	IsOpInRBF    bool          `json:"isOpInRBF"`
+	Inscriptions []Inscription `json:"inscriptions"`
+}
+
+type DataUtxoList struct {
+	Cursor                int    `json:"cursor"`
+	Total                 int    `json:"total"`
+	TotalConfirmed        int    `json:"totalConfirmed"`
+	TotalUnconfirmed      int    `json:"totalUnconfirmed"`
+	TotalUnconfirmedSpent int    `json:"totalUnconfirmedSpent"`
+	Utxo                  []UTXO `json:"utxo"`
+}
+
+type ResponseUtxoList struct {
+	Code    int64  `json:"code"`
+	Message string `json:"msg"`
+
+	Data DataUtxoList `json:"data"`
+}
+
+type ResponseBtcUtxo ResponseUtxoList
+type ResponseInscriptionUtxo ResponseUtxoList
