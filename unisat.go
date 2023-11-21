@@ -68,3 +68,10 @@ func GetInscriptionUtxo(ctx context.Context, server, bear, address string, offse
 	err := common.GetWithBear(ctx, url, bear, &resp)
 	return resp, err
 }
+
+func GetInscriptionInfo(ctx context.Context, server, bear, inscription string) (ResponseInscriptionInfo, error) {
+	var resp ResponseInscriptionInfo
+	url := InscriptionInfo(server, inscription)
+	err := common.GetWithBear(ctx, url, bear, &resp)
+	return resp, err
+}

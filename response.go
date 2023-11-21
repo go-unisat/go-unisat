@@ -164,3 +164,28 @@ type ResponseUtxoList struct {
 
 type ResponseBtcUtxo ResponseUtxoList
 type ResponseInscriptionUtxo ResponseUtxoList
+
+type DataInscriptionInfo struct {
+	Utxo              UTXO        `json:"utxo"`
+	Address           string      `json:"address"`
+	Offset            int         `json:"offset"`
+	InscriptionIndex  int         `json:"inscriptionIndex"`
+	InscriptionNumber int64       `json:"inscriptionNumber"`
+	InscriptionId     string      `json:"inscriptionId"`
+	ContentType       string      `json:"contentType"`
+	ContentLength     int         `json:"contentLength"`
+	ContentBody       string      `json:"contentBody"`
+	Height            int64       `json:"height"`
+	Timestamp         int64       `json:"timestamp"`
+	InSatoshi         *big.Int    `json:"inSatoshi"`
+	OutSatoshi        *big.Int    `json:"outSatoshi"`
+	Brc20             interface{} `json:"brc20"`
+	Detail            interface{} `json:"detail"`
+}
+
+type ResponseInscriptionInfo struct {
+	Code    int64  `json:"code"`
+	Message string `json:"msg"`
+
+	Data DataInscriptionInfo `json:"data"`
+}

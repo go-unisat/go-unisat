@@ -42,3 +42,7 @@ func BtcUtxo(server, address string, offset, limit int64) string {
 func InscriptionUtxo(server, address string, offset, limit int64) string {
 	return fmt.Sprintf("%s/v1/indexer/address/%s/inscription-utxo-data?cursor=%d&size=%d", server, address, offset, limit)
 }
+
+func InscriptionInfo(server, inscription string) string {
+	return fmt.Sprintf("%s/v1/indexer/inscription/info/%s", server, inscription)
+}
