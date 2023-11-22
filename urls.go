@@ -46,3 +46,46 @@ func InscriptionUtxo(server, address string, offset, limit int64) string {
 func InscriptionInfo(server, inscription string) string {
 	return fmt.Sprintf("%s/v1/indexer/inscription/info/%s", server, inscription)
 }
+
+func BestBlockHeight(server string) string {
+	return fmt.Sprintf("%s/v1/indexer/brc20/bestheight", server)
+}
+
+func Brc20List(server string, offset, limit int64) string {
+	return fmt.Sprintf("%s/v1/indexer/brc20/list?start=%d&limit=%d", server, offset, limit)
+}
+
+func Brc20Info(server, ticker string) string {
+	return fmt.Sprintf("%s/v1/indexer/brc20/%s/info", server, ticker)
+}
+
+func Brc20Holders(server, ticker string, offset, limit int64) string {
+	return fmt.Sprintf("%s/v1/indexer/brc20/%s/holders?start=%d&limit=%d", server, ticker, offset, limit)
+}
+
+func Brc20History(server, ticker, eventType string, height, offset, limit int64) string {
+	return fmt.Sprintf("%s/v1/indexer/brc20/%s/history?type=%s&height=%d&start=%d&limit=%d", server, ticker, eventType, height, offset, limit)
+}
+
+func Brc20TxHistory(server, ticker, tx, eventType string, offset, limit int64) string {
+	return fmt.Sprintf("%s/v1/indexer/brc20/%s/tx/%s/history?type=%s&start=%d&limit=%d", server, ticker, tx, eventType, offset, limit)
+}
+
+func AddressBrc20Summary(server, address string, offset, limit int64) string {
+	return fmt.Sprintf("%s/v1/indexer/address/%s/brc20/summary?start=%d&limit=%d", server, address, offset, limit)
+}
+
+func AddressBrc20TickInfo(server, address, ticker string) string {
+	// https://open-api.unisat.io/v1/indexer/address/{address}/brc20/{ticker}/info
+	return fmt.Sprintf("%s/v1/indexer/address/%s/brc20/%s/info", server, address, ticker)
+}
+
+func AddressBrc20History(server, address, ticker, eventType string, offset, limit int64) string {
+	// https://open-api.unisat.io/v1/indexer/address/{address}/brc20/{ticker}/history
+	return fmt.Sprintf("%s/v1/indexer/address/%s/brc20/%s/history?type=%s&start=%d&limit=%d", server, address, ticker, eventType, offset, limit)
+}
+
+func TransferableInscriptions(server, address, ticker string, offset, limit int64) string {
+	// https://open-api.unisat.io/v1/indexer/address/{address}/brc20/{ticker}/transferable-inscriptions
+	return fmt.Sprintf("%s/v1/indexer/address/%s/brc20/%s/transferable-inscriptions?start=%d&limit=%d", server, address, ticker, offset, limit)
+}

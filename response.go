@@ -189,3 +189,192 @@ type ResponseInscriptionInfo struct {
 
 	Data DataInscriptionInfo `json:"data"`
 }
+
+type DataBestHeight struct {
+	Height    int64  `json:"height"`
+	BlockId   string `json:"blockid"`
+	Timestamp int64  `json:"timestamp"`
+	Total     int64  `json:"total"`
+}
+
+type ResponseBestHeight struct {
+	Code    int64  `json:"code"`
+	Message string `json:"msg"`
+
+	Data DataBestHeight `json:"data"`
+}
+
+type DataBrc20List struct {
+	Height int64    `json:"height"`
+	Total  int64    `json:"total"`
+	Start  int64    `json:"start"`
+	Detail []string `json:"detail"`
+}
+
+type ResponseBrc20List struct {
+	Code    int64  `json:"code"`
+	Message string `json:"msg"`
+
+	Data DataBrc20List `json:"data"`
+}
+
+type DataBrc20Info struct {
+	Ticker        string `json:"ticker"`
+	Creator       string `json:"creator"`
+	InscriptionId string `json:"inscriptionId"`
+	Max           string `json:"max"`
+	Decimal       int    `json:"decimal"`
+	Limit         string `json:"limit"`
+	TxId          string `json:"txid"`
+
+	InscriptionNumber      int64 `json:"inscriptionNumber"`
+	InscriptionNumberStart int64 `json:"inscriptionNumberStart"`
+	InscriptionNumberEnd   int64 `json:"inscriptionNumberEnd"`
+	DeployHeight           int64 `json:"deployHeight"`
+	DeployBlocktime        int64 `json:"deployBlocktime"`
+	CompleteHeight         int64 `json:"completeHeight"`
+	CompleteBlocktime      int64 `json:"completeBlocktime"`
+
+	HoldersCount int64 `json:"holdersCount"`
+	HistoryCount int64 `json:"historyCount"`
+	MintTimes    int   `json:"mintTimes"`
+
+	Minted             string `json:"minted"`
+	TotalMinted        string `json:"totalMinted"`
+	ConfirmedMinted    string `json:"confirmedMinted"`
+	ConfirmedMinted1h  string `json:"confirmedMinted1h"`
+	ConfirmedMinted24h string `json:"confirmedMinted24h"`
+}
+
+type ResponseBrc20Info struct {
+	Code    int64  `json:"code"`
+	Message string `json:"msg"`
+
+	Data DataBrc20Info `json:"data"`
+}
+
+type Holder struct {
+	Address             string `json:"address"`
+	OverallBalance      string `json:"overallBalance"`
+	TransferableBalance string `json:"transferableBalance"`
+	AvailableBalance    string `json:"availableBalance"`
+}
+
+type DataBrc20Holders struct {
+	Height int64    `json:"height"`
+	Total  int64    `json:"total"`
+	Start  int64    `json:"start"`
+	Detail []Holder `json:"detail"`
+}
+
+type ResponseBrc20Holders struct {
+	Code    int64  `json:"code"`
+	Message string `json:"msg"`
+
+	Data DataBrc20Holders `json:"data"`
+}
+
+type Event struct {
+	Ticker            string   `json:"ticker"`
+	Type              string   `json:"type"`
+	Valid             bool     `json:"valid"`
+	TxId              string   `json:"txid"`
+	Index             int      `json:"idx"`
+	Vout              int      `json:"vout"`
+	InscriptionNumber int64    `json:"inscriptionNumber"`
+	InscriptionId     string   `json:"inscriptionId"`
+	From              string   `json:"from"`
+	To                string   `json:"to"`
+	Satoshi           *big.Int `json:"satoshi"`
+	Amount            string   `json:"amount"`
+
+	OverallBalance   string `json:"overallBalance"`
+	TransferBalance  string `json:"transferBalance"`
+	AvailableBalance string `json:"availableBalance"`
+
+	Height    int64  `json:"height"`
+	TxIndex   int    `json:"txidx"`
+	Blockhash string `json:"blockhash"`
+	Blocktime int64  `json:"blocktime"`
+}
+
+type DataBrc20History struct {
+	Height int64   `json:"height"`
+	Total  int64   `json:"total"`
+	Start  int64   `json:"start"`
+	Detail []Event `json:"detail"`
+}
+
+type ResponseBrc20History struct {
+	Code    int64  `json:"code"`
+	Message string `json:"msg"`
+
+	Data DataBrc20History `json:"data"`
+}
+
+type ResponseBrc20TxHistory ResponseBrc20History
+
+type Brc20Balance struct {
+	Ticker              string `json:"ticker"`
+	OverallBalance      string `json:"overallBalance"`
+	TransferableBalance string `json:"transferableBalance"`
+	AvailableBalance    string `json:"availableBalance"`
+}
+
+type DataBrc20Summary struct {
+	Height int64 `json:"height"`
+	Total  int64 `json:"total"`
+	Start  int64 `json:"start"`
+
+	Detail []Brc20Balance `json:"detail"`
+}
+
+type ResponseBrc20Summary struct {
+	Code    int64  `json:"code"`
+	Message string `json:"msg"`
+
+	Data DataBrc20Summary `json:"data"`
+}
+
+type HistoryData struct {
+	Op     string `json:"op"`
+	Tick   string `json:"tick"`
+	Amt    string `json:"amt"`
+	Minted string `json:"minted"`
+}
+
+type InscriptionHistory struct {
+	Data              HistoryData `json:"data"`
+	InscriptionNumber int64       `json:"inscriptionNumber"`
+	InscriptionId     string      `json:"inscriptionId"`
+	Confirmations     int64       `json:"confirmations"`
+}
+
+type DataAddressTickInfo struct {
+	Ticker string `json:"ticker"`
+
+	OverallBalance         string `json:"overallBalance"`
+	TransferableBalance    string `json:"transferableBalance"`
+	AvailableBalance       string `json:"availableBalance"`
+	AvailableBalanceSafe   string `json:"availableBalanceSafe"`
+	AvailableBalanceUnSafe string `json:"availableBalanceUnSafe"`
+
+	TransferableCount int `json:"transferableCount"`
+
+	// TODO: check this structure
+	TransferableInscriptions []interface{} `json:"transferableInscriptions"`
+
+	HistoryCount int `json:"historyCount"`
+
+	HistoryInscriptions []InscriptionHistory `json:"historyInscriptions"`
+}
+
+type ResponseAddressBrc20TickInfo struct {
+	Code    int64  `json:"code"`
+	Message string `json:"msg"`
+
+	Data DataAddressTickInfo `json:"data"`
+}
+
+type ResponseAddressBrc20History ResponseBrc20History
+type ResponseTransferableInscriptions ResponseBrc20History
