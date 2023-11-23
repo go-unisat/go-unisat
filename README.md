@@ -17,6 +17,10 @@ if err != nil {
 }
 ```
 
+## 参数说明
+
+原始`API`中翻页的参数有`start/limit`、`cursor/size`等多种表达方式，这里统一使用`offset/limit`来命名。
+
 ## 联系作者
 
 你可以在X推特([@alexgiantwhale](https://twitter.com/alexgiantwhale))和电报(alexgiantwhale)上找到我。
